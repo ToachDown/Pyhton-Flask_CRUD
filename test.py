@@ -3,8 +3,8 @@ import requests
 BASE = "http://localhost:5000/"
 
 data = [
-    {"likes": 101, "name": "Saloed 3000", "views": 111},
-    {"likes": 1034, "name": "zalo bomza", "views": 222},
+    {"likes": 101, "name": "grey 3000", "views": 111},
+    {"likes": 1034, "name": "gym master", "views": 222},
     {"likes": 560, "name": "black carrot", "views": 333},
     {"likes": 11140, "name": "green gun", "views": 4444}
 ]
