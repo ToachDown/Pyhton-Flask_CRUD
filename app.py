@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import os
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy, Model
@@ -46,6 +46,22 @@ video_update_args = reqparse.RequestParser()
 video_update_args.add_argument("name", type=str, help="Name of the Video")
 video_update_args.add_argument("views", type=int, help="Views of the Video")
 video_update_args.add_argument("likes", type=int, help="Likes of the Video")
+
+exiting = False
+
+
+@app.route("/shutdown")
+def exit_app():
+    global exiting
+    exiting = True
+    return "Done"
+
+
+@app.teardown_request
+def teardown(exception):
+    if exiting:
+        print("Server Down...")
+        os._exit(0)
 
 
 class Video(Resource):
